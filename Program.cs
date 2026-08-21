@@ -67,7 +67,7 @@ class Grafo
         int n;
         for (int i = 0; i < 8; i++)
         {
-            for (int j = 0; j < 8; j++)
+            for (int j = i; j < 8; j++)
             {
                 n = aleatorio.Next(0, 11);
                 this.matrizGrafo[i, j] = n;
