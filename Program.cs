@@ -15,22 +15,30 @@ class Grafo
                 matrizGrafo[i, j] = 0;
             }
         }
+        System.Console.WriteLine("Grafo Gerado!");
     }
+
     /* Procedimento que insere uma aresta entre dois vétices, no grafo dos dois lados */
     public void InsereAresta(int v1, int v2, int peso)
     {
-        v1--;
-        v2--;
-        try
+        if (this.matrizGrafo[v1, v2] == 0)
         {
-            this.matrizGrafo[v1, v2] = peso;
-            this.matrizGrafo[v2, v1] = peso;
+            v1--;
+            v2--;
+            try
+            {
+                this.matrizGrafo[v1, v2] = peso;
+                this.matrizGrafo[v2, v1] = peso;
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                System.Console.WriteLine($"Insira somente valores entre de 1 a 8!");
+            }
         }
-        catch (IndexOutOfRangeException ex)
-        {
-            System.Console.WriteLine($"Valor < 0 ou > 8 para v1 ou v2, insira valores válidos!");
-        }
+        else
+            System.Console.WriteLine("Os vértices já possuem uma aresta");
     }
+
     /* Construtor do grafo, inicia a matriz e a zera*/
     public Grafo()
     {
@@ -52,6 +60,7 @@ class Grafo
         }
 
     }
+
     /* Função que retorna verdadeiro se a aresta existir. */
     public bool ExisteAresta(int v1, int v2)
     {
@@ -61,6 +70,8 @@ class Grafo
             return true;
         return false;
     }
+
+    /* Função que preenche a matriz com números aleatórios, de forma espelhada */
     public void PreencherMatriz()
     {
         Random aleatorio = new Random();
@@ -71,9 +82,11 @@ class Grafo
             {
                 n = aleatorio.Next(0, 11);
                 this.matrizGrafo[i, j] = n;
-                this.matrizGrafo[j, i] = n;
+                if (i != j)
+                    this.matrizGrafo[j, i] = n;
             }
         }
+        System.Console.WriteLine("Matriz preenchida com sucesso!");
     }
 }
 class Program
@@ -89,39 +102,61 @@ class Program
             try
             {
                 System.Console.WriteLine("\nSelecione uma opção:");
-                System.Console.WriteLine("0) Encerrar o programa\n1) Imprime Grafo\n2) Insere Aresta\n3) Verificar aresta\n4) Preencher com valores aleatórios(0-10)");
+                System.Console.WriteLine("0) Encerrar o programa\n1) Imprimir Grafo\n2) Inserir Aresta\n3) Verificar aresta\n4) Preencher com valores aleatórios(0-10)\n");
                 op = int.Parse(Console.ReadLine());
                 switch (op)
                 {
                     case 0:
                         System.Console.WriteLine("Encerrando o programa...");
                         break;
+
                     case 1:
                         g.ImprimeGrafo();
                         break;
+
                     case 2:
-                        System.Console.WriteLine("Insira o vértice 1");
-                        v1 = int.Parse(Console.ReadLine());
-                        System.Console.WriteLine("Insira o vértice 2");
-                        v2 = int.Parse(Console.ReadLine());
-                        System.Console.WriteLine("Qual o peso da aresta?");
-                        peso = int.Parse(Console.ReadLine());
-                        g.InsereAresta(v1, v2, peso);
+                        try
+                        {
+                            System.Console.WriteLine("Insira o vértice 1");
+                            v1 = int.Parse(Console.ReadLine());
+                            System.Console.WriteLine("Insira o vértice 2");
+                            v2 = int.Parse(Console.ReadLine());
+                            System.Console.WriteLine("Qual o peso da aresta?");
+                            peso = int.Parse(Console.ReadLine());
+                            g.InsereAresta(v1, v2, peso);
+                        }
+                        catch (FormatException ex)
+                        {
+                            System.Console.WriteLine("Insira somente números!");
+                        }
                         break;
 
                     case 3:
-                        System.Console.WriteLine("Insira o vértice 1");
-                        v1 = int.Parse(Console.ReadLine());
-                        System.Console.WriteLine("Insira o vértice 2");
-                        v2 = int.Parse(Console.ReadLine());
-                        if (g.ExisteAresta(v1, v2))
-                            System.Console.WriteLine($"A aresta existe entre os vértices {v1} e {v2}, com peso: {g.matrizGrafo[--v1, --v2]}");
-                        else
-                            System.Console.WriteLine("A aresta não existe!");
+                        try
+                        {
+                            System.Console.WriteLine("Insira o vértice 1");
+                            v1 = int.Parse(Console.ReadLine());
+                            System.Console.WriteLine("Insira o vértice 2");
+                            v2 = int.Parse(Console.ReadLine());
+                            if (g.ExisteAresta(v1, v2))
+                                System.Console.WriteLine($"A aresta existe entre os vértices {v1} e {v2}, com peso: {g.matrizGrafo[--v1, --v2]}");
+                            else
+                                System.Console.WriteLine("A aresta não existe!");
+                        }
+                        catch (FormatException ex)
+                        {
+                            System.Console.WriteLine("Insira somente números!");
+                        }
+                        catch (IndexOutOfRangeException ex)
+                        {
+                            System.Console.WriteLine("Insira somente números entre 1 e 8");
+                        }
                         break;
+
                     case 4:
                         g.PreencherMatriz();
                         break;
+
                     default:
                         System.Console.WriteLine("Insira uma opção válida!");
                         break;
