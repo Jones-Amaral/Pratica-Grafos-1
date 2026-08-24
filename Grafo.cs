@@ -1,10 +1,18 @@
 #pragma warning disable
+using System.Reflection.Metadata;
+
 class Grafo
 {
     public int[,] matrizGrafo;
     public int numVertice { get; set; }
     public int numArestas { get; set; }
 
+    /* Construtor do grafo, inicia a matriz e a zera | Colocamos no máximo 8 vértices*/
+    public Grafo()
+    {
+        matrizGrafo = new int[8, 8];
+        ZeraGrafo();
+    }
     /* Procedimento que coloca 0 em todas posições, ou seja, nenhum vertice tem nenhuma conexão */
     public void ZeraGrafo()
     {
@@ -39,13 +47,6 @@ class Grafo
             System.Console.WriteLine("Os vértices já possuem uma aresta");
     }
 
-    /* Construtor do grafo, inicia a matriz e a zera*/
-    public Grafo()
-    {
-        matrizGrafo = new int[8, 8];
-        ZeraGrafo();
-    }
-
     /* Procedimento que imprime o grafo */
     public void ImprimeGrafo()
     {
@@ -72,27 +73,29 @@ class Grafo
         return false;
     }
 
-    /* Função que preenche a matriz com números aleatórios, de forma espelhada */
-    public void PreencherMatriz()
+    /* Função que preenche a matriz com números aleatórios, em índices aleatórios, de forma espelhada, ignorando os loops */
+    public void PreencherMatriz(int arestas)
     {
         Random aleatorio = new Random();
         int n;
-
-        for (int i = 0; i < 8; i++)
+        if (arestas < 1 || arestas > 28)
         {
-            for (int j = i; j < 8; j++)
+            System.Console.WriteLine("Insira um número válido de arestas");
+            return;
+        }
+        while (arestas > 0)
+        {
+            int i = aleatorio.Next(0, 8);
+            int j = aleatorio.Next(0, 8);
+
+            if (i != j && this.matrizGrafo[i, j] == 0)
             {
-                n = aleatorio.Next(0, 11);
-                this.matrizGrafo[i, j] = n;
-
-                if (i != j)
-                    this.matrizGrafo[j, i] = n;
-
-                else if (i == j)
-                    this.matrizGrafo[i, j] = 0;
+                int peso = aleatorio.Next(1, 11);
+                this.matrizGrafo[i, j] = peso;
+                this.matrizGrafo[j, i] = peso;
+                arestas--;
             }
         }
-
         Console.ForegroundColor = ConsoleColor.Green;
         System.Console.WriteLine("Matriz preenchida com sucesso!");
         Console.ResetColor();

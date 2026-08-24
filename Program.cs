@@ -4,7 +4,7 @@ class Program
     static void Main()
     {
         Grafo grafo = new Grafo();
-        int opção = 1000, v1, v2, peso;
+        int opção = 1000, v1, v2, peso, arestas;
         Console.Clear();
 
         do
@@ -96,8 +96,9 @@ class Program
 
                     case 5:
                         Console.Clear();
-
-                        grafo.PreencherMatriz();
+                        System.Console.WriteLine("Quantas arestas na matriz?");
+                        arestas = int.Parse(Console.ReadLine());
+                        grafo.PreencherMatriz(arestas);
                         break;
 
                     default:
