@@ -14,7 +14,7 @@ class Program
                 Console.Clear();
 
                 Console.WriteLine("Selecione uma opção:");
-                Console.WriteLine("\n0) Encerrar o programa\n1) Imprimir Grafo\n2) Inserir Aresta\n3) Verificar aresta\n4) Zerar Grafo\n5) Preencher com valores aleatórios (0-10)\n");
+                Console.WriteLine("\n0) Encerrar o programa\n1) Imprimir Grafo\n2) Inserir Aresta\n3) Verificar aresta\n4) Zerar Grafo\n5) Preencher com valores aleatórios (0-10)\n6) Busca de Profundida\n");
                 opção = int.Parse(Console.ReadLine());
                 switch (opção)
                 {
@@ -100,7 +100,13 @@ class Program
                         arestas = int.Parse(Console.ReadLine());
                         grafo.PreencherMatriz(arestas);
                         break;
-
+                    case 6:
+                        Console.Clear();
+                        grafo.BuscaProfundidade();
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Busca concluída!");
+                        Console.ResetColor();
+                        break;
                     default:
                         Console.Clear();
                         Console.WriteLine("Insira uma opção válida!");

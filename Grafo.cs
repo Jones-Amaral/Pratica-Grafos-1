@@ -1,16 +1,24 @@
 #pragma warning disable
-using System.Reflection.Metadata;
+
+
+using System.Reflection.PortableExecutable;
 
 class Grafo
 {
     public int[,] matrizGrafo;
     public int numVertice { get; set; }
     public int numArestas { get; set; }
+    string[] cor;
+    public int[] pred, d, t;
 
     /* Construtor do grafo, inicia a matriz e a zera | Colocamos no máximo 8 vértices*/
     public Grafo()
     {
         matrizGrafo = new int[8, 8];
+        cor = new string[matrizGrafo.GetLength(0)];
+        pred = new int[matrizGrafo.GetLength(0)];
+        d = new int[this.matrizGrafo.GetLength(0)];
+        t = new int[this.matrizGrafo.GetLength(0)];
         ZeraGrafo();
     }
     /* Procedimento que coloca 0 em todas posições, ou seja, nenhum vertice tem nenhuma conexão */
@@ -20,7 +28,7 @@ class Grafo
         {
             for (int j = 0; j < this.matrizGrafo.GetLength(1); j++)
             {
-                matrizGrafo[i, j] = 0;
+                this.matrizGrafo[i, j] = 0;
             }
         }
     }
@@ -100,4 +108,39 @@ class Grafo
         System.Console.WriteLine("Matriz preenchida com sucesso!");
         Console.ResetColor();
     }
+    public void BuscaProfundidade()
+    {
+        for (int i = 0; i < this.matrizGrafo.GetLength(0); i++)
+        {
+            cor[i] = "branco";
+            pred[i] = -1;
+        }
+        int tempo = 0;
+        for (int i = 0; i < this.matrizGrafo.GetLength(0); i++)
+        {
+            if (cor[i] == "branco")
+                Visita(i, ref tempo);
+        }
+    }
+    public void Visita(int atual, ref int tempo)
+    {
+        cor[atual] = "azul";
+        tempo++;
+        d[atual] = tempo;
+        for (int i = 0; i < this.matrizGrafo.GetLength(1); i++)
+        {
+            if (cor[i] == "branco" && matrizGrafo[atual, i] != 0)
+            {
+                pred[i] = atual;
+                System.Console.WriteLine($"V{atual + 1} -> V{i + 1}");
+                Visita(i, ref tempo);
+                System.Console.WriteLine($"V{i + 1} -> V{atual + 1}");
+            }
+        }
+        cor[atual] = "vermelho";
+        tempo = tempo + 1;
+        t[atual] = tempo;
+
+    }
+
 }
