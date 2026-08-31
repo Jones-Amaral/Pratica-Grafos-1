@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Desktop\\Faculdade\\4 semestre\\Grafos\\Exercicios avaliativos\\Pratica-Grafos-1\\Pratica-Grafos-1.csproj": {}
+    "C:\\Users\\mathe\\OneDrive\\Documents\\4º Semestre\\Algoritmos em Grafos\\Atividade Prática 1\\Pratica-Grafos-1\\Pratica-Grafos-1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Desktop\\Faculdade\\4 semestre\\Grafos\\Exercicios avaliativos\\Pratica-Grafos-1\\Pratica-Grafos-1.csproj": {
+    "C:\\Users\\mathe\\OneDrive\\Documents\\4º Semestre\\Algoritmos em Grafos\\Atividade Prática 1\\Pratica-Grafos-1\\Pratica-Grafos-1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\Faculdade\\4 semestre\\Grafos\\Exercicios avaliativos\\Pratica-Grafos-1\\Pratica-Grafos-1.csproj",
+        "projectUniqueName": "C:\\Users\\mathe\\OneDrive\\Documents\\4º Semestre\\Algoritmos em Grafos\\Atividade Prática 1\\Pratica-Grafos-1\\Pratica-Grafos-1.csproj",
         "projectName": "Pratica-Grafos-1",
-        "projectPath": "C:\\Users\\user\\Desktop\\Faculdade\\4 semestre\\Grafos\\Exercicios avaliativos\\Pratica-Grafos-1\\Pratica-Grafos-1.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\Faculdade\\4 semestre\\Grafos\\Exercicios avaliativos\\Pratica-Grafos-1\\obj\\",
+        "projectPath": "C:\\Users\\mathe\\OneDrive\\Documents\\4º Semestre\\Algoritmos em Grafos\\Atividade Prática 1\\Pratica-Grafos-1\\Pratica-Grafos-1.csproj",
+        "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mathe\\OneDrive\\Documents\\4º Semestre\\Algoritmos em Grafos\\Atividade Prática 1\\Pratica-Grafos-1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\mathe\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -67,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

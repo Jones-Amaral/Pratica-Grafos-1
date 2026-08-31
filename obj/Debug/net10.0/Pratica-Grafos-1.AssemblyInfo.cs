@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pratica-Grafos-1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b500b94b7e7583d02667abb4056907f1a155e70")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+550efb856bdb6c4b6bd59220c40c998f119a6ecc")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pratica-Grafos-1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pratica-Grafos-1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

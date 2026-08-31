@@ -21,6 +21,7 @@ class Grafo
         t = new int[this.matrizGrafo.GetLength(0)];
         ZeraGrafo();
     }
+
     /* Procedimento que coloca 0 em todas posições, ou seja, nenhum vertice tem nenhuma conexão */
     public void ZeraGrafo()
     {
@@ -48,11 +49,17 @@ class Grafo
             }
             catch (IndexOutOfRangeException ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 System.Console.WriteLine($"Insira somente valores entre de 1 a 8!");
+                Console.ResetColor();
             }
         }
         else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
             System.Console.WriteLine("Os vértices já possuem uma aresta");
+            Console.ResetColor();
+        }
     }
 
     /* Procedimento que imprime o grafo */
@@ -85,12 +92,15 @@ class Grafo
     public void PreencherMatriz(int arestas)
     {
         Random aleatorio = new Random();
-        int n;
+
         if (arestas < 1 || arestas > 28)
         {
-            System.Console.WriteLine("Insira um número válido de arestas");
+            Console.ForegroundColor = ConsoleColor.Red;
+            System.Console.WriteLine("\nInsira um número válido de arestas (1 a 28)");
+            Console.ResetColor();
             return;
         }
+
         while (arestas > 0)
         {
             int i = aleatorio.Next(0, 8);
@@ -105,9 +115,10 @@ class Grafo
             }
         }
         Console.ForegroundColor = ConsoleColor.Green;
-        System.Console.WriteLine("Matriz preenchida com sucesso!");
+        System.Console.WriteLine("\nMatriz preenchida com sucesso!");
         Console.ResetColor();
     }
+
     public void BuscaProfundidade()
     {
         for (int i = 0; i < this.matrizGrafo.GetLength(0); i++)
@@ -115,6 +126,7 @@ class Grafo
             cor[i] = "branco";
             pred[i] = -1;
         }
+
         int tempo = 0;
         for (int i = 0; i < this.matrizGrafo.GetLength(0); i++)
         {
@@ -122,11 +134,13 @@ class Grafo
                 Visita(i, ref tempo);
         }
     }
+
     public void Visita(int atual, ref int tempo)
     {
         cor[atual] = "azul";
         tempo++;
         d[atual] = tempo;
+
         for (int i = 0; i < this.matrizGrafo.GetLength(1); i++)
         {
             if (cor[i] == "branco" && matrizGrafo[atual, i] != 0)
@@ -137,10 +151,9 @@ class Grafo
                 System.Console.WriteLine($"V{i + 1} -> V{atual + 1}");
             }
         }
+
         cor[atual] = "vermelho";
         tempo = tempo + 1;
         t[atual] = tempo;
-
     }
-
 }
