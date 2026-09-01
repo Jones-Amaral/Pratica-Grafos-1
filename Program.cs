@@ -4,7 +4,7 @@ class Program
     static void Main()
     {
         Grafo grafo = new Grafo();
-        int opção = 1000, v1, v2, peso, arestas;
+        int opção = 1000, v1, v2, peso, arestas, verticeInicial;
         Console.Clear();
 
         do
@@ -107,10 +107,9 @@ class Program
 
                     case 6:
                         Console.Clear();
-                        grafo.BuscaProfundidade();
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("\nBusca concluída!");
-                        Console.ResetColor();
+                        System.Console.Write("Qual o vértice inicial? ");
+                        verticeInicial = int.Parse(Console.ReadLine());
+                        grafo.BuscaProfundidade(verticeInicial);
                         break;
                         
                     default:

@@ -119,20 +119,38 @@ class Grafo
         Console.ResetColor();
     }
 
-    public void BuscaProfundidade()
+    public void BuscaProfundidade(int verticeInicial)
     {
+        if (verticeInicial < 1 || verticeInicial > this.matrizGrafo.GetLength(0))
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Insira somente valores entre 1 e 8");
+            Console.ResetColor();
+            return;
+        }
+
+        int origem = verticeInicial - 1;
+
         for (int i = 0; i < this.matrizGrafo.GetLength(0); i++)
         {
             cor[i] = "branco";
             pred[i] = -1;
+            d[i] = 0;
+            t[i] = 0;
         }
 
         int tempo = 0;
+        Visita(origem, ref tempo);
+
         for (int i = 0; i < this.matrizGrafo.GetLength(0); i++)
         {
             if (cor[i] == "branco")
                 Visita(i, ref tempo);
         }
+        
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("\nBusca concluída!");
+        Console.ResetColor();
     }
 
     public void Visita(int atual, ref int tempo)
